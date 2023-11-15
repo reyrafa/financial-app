@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('company_id')->unique();
             $table->string('password');
             $table->boolean('is_admin');
-            $table->integer('status_id');
+            $table->boolean('is_enabled');
         });
     }
 

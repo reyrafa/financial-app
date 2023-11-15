@@ -25,7 +25,7 @@ class User extends Authenticatable
         'company_id',
         'password',
         'is_admin',
-        'status_id'
+        'is_enabled'
     ];
 
 
