@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MembershipController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,10 +21,15 @@ Route::get('/', function () {
 
 Route::middleware([
     'auth:sanctum',
+    'check.account_status',
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+});
+
+Route::middleware(['auth:sanctum', 'check.account_status'])->group(function () {
+    Route::get('/members-info', [MembershipController::class, 'index']);
 });
