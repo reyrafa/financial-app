@@ -31,5 +31,9 @@ Route::middleware([
 });
 
 Route::middleware(['auth:sanctum', 'check.account_status'])->group(function () {
-    Route::get('/members-info', [MembershipController::class, 'index']);
+
+    Route::name('membership.')->prefix('membership-info')->group(function () {
+    Route::get('/', [MembershipController::class, 'index'])->name('index');
+    });
 });
+ 
